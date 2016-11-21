@@ -1,0 +1,43 @@
+<div class="row">
+    <h2>Add new team</h2>
+    <form (submit)="add(teamForm)">
+        <div class="input-group">
+            <input type="text" name="name" class="form-control" [(ngModel)]="teamForm.name" [class.todo-error]="!teamForm.name.length"
+                placeholder="Team name" autofocus />
+            <input type="text" name="id" class="form-control" [(ngModel)]="teamForm._id" [class.todo-error]="!teamForm.name.length" placeholder="Url of team"
+                autofocus />
+            <input type="text" name="picture" class="form-control" [(ngModel)]="teamForm.picture" placeholder="Team picture url" autofocus
+            />
+            <div class="form-group">
+                <label for="admin-teams-newteamgame">Select Game</label>
+                <select class="form-control" id="admin-teams-game" required [(ngModel)]="teamForm.game" name="admin-teams-game">
+                    <option *ngFor="let g of games" [value]="g._id">
+                        {{g.name}}
+                    </option>
+                </select>
+            </div>
+            <span class="input-group-btn">
+                <button class="btn btn-primary" type="submit" [disabled]="!teamForm.name.length && !teamForm.name.length">Add</button>
+            </span>
+
+        </div>
+    </form>
+</div>
+
+<div class="row">
+    <div class="teams">
+        <div *ngFor="let team of teams;" class="row admin-team-row">
+            <div class="col-md-1">
+                <img src="{{team.picture}}" />
+            </div>
+            <div class="col-md-4">
+                <p>{{team.name}}</p>
+            </div>
+            <div class="col-md-3">
+                <img src="{{team.game.picture}}" style="max-height: 1rem;"/>
+                <p>{{team.game.name}}</p>
+            </div>
+            <div class="col-md-4"><button class="btn btn-danger" (click)="remove(team._id);">Remove</button></div>
+        </div>
+    </div>
+</div>

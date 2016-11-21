@@ -1,0 +1,12 @@
+.admin-match-row {
+    border: 0.3rem gray solid;
+    border-radius: 1rem;
+}
+
+.admin-match-row div img {
+    max-height: 3rem;
+}
+
+.admin-match-row:last-child {
+    border-top: 0;
+}

@@ -1,0 +1,30 @@
+<div class="row">
+    <h2>Add new match</h2>
+    <form (submit)="add(matchForm)">
+        <div class="input-group">
+            <input type="text" name="name" class="form-control" [(ngModel)]="matchForm.name" [class.todo-error]="!matchForm.name.length"
+                placeholder="match name" autofocus />
+            <input type="text" name="id" class="form-control" [(ngModel)]="matchForm._id" [class.todo-error]="!matchForm.name.length" placeholder="Url of match"
+                autofocus />
+            <input type="text" name="picture" class="form-control" [(ngModel)]="matchForm.picture" placeholder="match picture url" autofocus
+            />
+            <span class="input-group-btn">
+                        <button class="btn btn-primary" type="submit" [disabled]="!matchForm.name.length && !matchForm.name.length">Add</button>
+                    </span>
+        </div>
+    </form>
+</div>
+
+<div class="row">
+    <div class="matchs">
+        <div *ngFor="let match of matchs;" class="row admin-match-row">
+            <div class="col-md-1">
+                <img src="{{match.picture}}" />
+            </div>
+            <div class="col-md-7">
+                <p>{{match.name}}</p>
+            </div>
+            <div class="col-md-4"><button class="btn btn-danger" (click)="remove(match._id);">Remove</button></div>
+        </div>
+    </div>
+</div>

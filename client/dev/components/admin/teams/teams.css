@@ -1,0 +1,12 @@
+.admin-team-row {
+    border: 0.3rem gray solid;
+    border-radius: 1rem;
+}
+
+.admin-team-row div img {
+    max-height: 3rem;
+}
+
+.admin-team-row:last-child {
+    border-top: 0;
+}

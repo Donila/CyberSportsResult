@@ -1,0 +1,30 @@
+<div class="row">
+    <h2>Add new game</h2>
+    <form (submit)="add(gameForm)">
+        <div class="input-group">
+            <input type="text" name="name" class="form-control" [(ngModel)]="gameForm.name" [class.todo-error]="!gameForm.name.length"
+                placeholder="Game name" autofocus />
+            <input type="text" name="id" class="form-control" [(ngModel)]="gameForm._id" [class.todo-error]="!gameForm.name.length" placeholder="Url of game"
+                autofocus />
+            <input type="text" name="picture" class="form-control" [(ngModel)]="gameForm.picture" placeholder="Game picture url" autofocus
+            />
+            <span class="input-group-btn">
+                        <button class="btn btn-primary" type="submit" [disabled]="!gameForm.name.length && !gameForm.name.length">Add</button>
+                    </span>
+        </div>
+    </form>
+</div>
+
+<div class="row">
+    <div class="games">
+        <div *ngFor="let game of games;" class="row admin-game-row">
+            <div class="col-md-1">
+                <img src="{{game.picture}}" />
+            </div>
+            <div class="col-md-7">
+                <p>{{game.name}}</p>
+            </div>
+            <div class="col-md-4"><button class="btn btn-danger" (click)="remove(game._id);">Remove</button></div>
+        </div>
+    </div>
+</div>

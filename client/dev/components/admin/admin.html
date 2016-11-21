@@ -1,0 +1,45 @@
+<h2>Administration</h2>
+<ngb-tabset>
+    <ngb-tab>
+        <template ngbTabTitle><b>Games</b></template>
+        <template ngbTabContent>
+            <div class="container">
+                <admin-games></admin-games>
+            </div>
+        </template>
+    </ngb-tab>
+    <ngb-tab>
+        <template ngbTabTitle><b>Players</b></template>
+        <template ngbTabContent>
+            <div class="container">
+                <admin-players></admin-players>
+            </div>
+        </template>
+    </ngb-tab>
+    <ngb-tab>
+        <template ngbTabTitle><b>Teams</b></template>
+        <template ngbTabContent>
+            <div class="container">
+                <admin-teams></admin-teams>
+            </div>
+        </template>
+    </ngb-tab>
+    <ngb-tab>
+        <template ngbTabTitle><b>Participants</b></template>
+        <template ngbTabContent>Teams goes here
+        </template>
+    </ngb-tab>
+    <ngb-tab>
+        <template ngbTabTitle><b>Matches</b></template>
+        <template ngbTabContent>
+            <div class="container">
+                <admin-matches></admin-matches>
+            </div>
+        </template>
+    </ngb-tab>
+    <ngb-tab [disabled]="true">
+        <template ngbTabTitle><b>Tournaments</b></template>
+        <template ngbTabContent>Tournaments go here
+        </template>
+    </ngb-tab>
+</ngb-tabset>

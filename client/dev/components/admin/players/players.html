@@ -1,0 +1,40 @@
+<div class="row">
+    <h2>Add new player</h2>
+    <form (submit)="add(playerForm)" #playerHtmlForm="ngForm">
+        <div class="input-group">
+            <input type="text" name="name" class="form-control" [(ngModel)]="playerForm.name" [class.todo-error]="!playerForm.name.length" placeholder="Player's name" autofocus required />
+            <input type="text" name="id" class="form-control" [(ngModel)]="playerForm._id" [class.todo-error]="!playerForm.name.length" placeholder="Url of a player" autofocus required />
+            <input type="text" name="picture" class="form-control" [(ngModel)]="playerForm.picture" placeholder="Player's picture" autofocus />
+            <div class="form-group">
+                <label for="admin-players-newplayerteam">Select Team</label>
+                <select class="form-control" id="admin-teams-game" required #teamSelector [(ngModel)]="selectedTeam" (change)="teamSelected($event, selectedTeam)" name="admin-players-team">
+                    <option *ngFor="let g of teams" [value]="g._id">
+                        {{g.name}}
+                    </option>
+                </select>
+            </div>
+            <span class="input-group-btn">
+                <!--<button class="btn btn-primary" type="submit" [disabled]="!playerHtmlForm.form.valid">Add</button>-->
+                <button class="btn btn-primary" type="submit">Add</button>
+            </span>
+        </div>
+    </form>
+</div>
+
+<div class="row">
+    <div class="players">
+        <div *ngFor="let player of players;" class="row admin-player-row">
+            <div class="col-md-1">
+                <img src="{{player.picture}}" />
+            </div>
+            <div class="col-md-4">
+                <p>{{player.name}}</p>
+            </div>
+            <div class="col-md-3">
+                <img src="{{player.teams[0] ? player.teams[0].team.picture : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ08sZ6YRdJrXL4vaFXxw6sEcFRKX1KCCWc4uVV1_YgGo07AT-t'}}" />
+                <p>{{player.teams[0].team.name}}</p>
+            </div>
+            <div class="col-md-4"><button class="btn btn-danger" (click)="remove(player._id);">Remove</button></div>
+        </div>
+    </div>
+</div>
