@@ -1,21 +1,33 @@
-import { NgModule }     from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './components/app/AppComponent';
 import { MainComponent } from './components/main/MainComponent';
 import { AdminComponent } from './components/admin/AdminComponent';
 import { TodoComponent } from './components/todo/TodoComponent';
+import { AdminGamesComponent } from './components/admin/games/AdminGamesComponent';
+import { AdminMatchesComponent } from './components/admin/matches/AdminMatchesComponent';
+import { AdminPlayersComponent } from './components/admin/players/AdminPlayersComponent';
+import { AdminTeamsComponent } from './components/admin/teams/AdminTeamsComponent';
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot([
-      { path: '', component: MainComponent },
-      { path: 'todo', component: TodoComponent },
-      { path: 'admin', component: AdminComponent }
-    ])
-  ],
-  exports: [
-    RouterModule
-  ]
+    imports: [
+        RouterModule.forRoot([
+            { path: '', component: MainComponent },
+            { path: 'todo', component: TodoComponent },
+            {
+                path: 'admin', component: AdminComponent, children: [
+                    { path: '', redirectTo: 'games', pathMatch: 'full' },
+                    { path: 'games', component: AdminGamesComponent },
+                    { path: 'matches', component: AdminMatchesComponent },
+                    { path: 'players', component: AdminPlayersComponent },
+                    { path: 'teams', component: AdminTeamsComponent },
+                ]
+            }
+        ])
+    ],
+    exports: [
+        RouterModule
+    ]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

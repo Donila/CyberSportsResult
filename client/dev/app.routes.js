@@ -13,6 +13,10 @@ var router_1 = require('@angular/router');
 var MainComponent_1 = require('./components/main/MainComponent');
 var AdminComponent_1 = require('./components/admin/AdminComponent');
 var TodoComponent_1 = require('./components/todo/TodoComponent');
+var AdminGamesComponent_1 = require('./components/admin/games/AdminGamesComponent');
+var AdminMatchesComponent_1 = require('./components/admin/matches/AdminMatchesComponent');
+var AdminPlayersComponent_1 = require('./components/admin/players/AdminPlayersComponent');
+var AdminTeamsComponent_1 = require('./components/admin/teams/AdminTeamsComponent');
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
     }
@@ -22,7 +26,15 @@ var AppRoutingModule = (function () {
                 router_1.RouterModule.forRoot([
                     { path: '', component: MainComponent_1.MainComponent },
                     { path: 'todo', component: TodoComponent_1.TodoComponent },
-                    { path: 'admin', component: AdminComponent_1.AdminComponent }
+                    {
+                        path: 'admin', component: AdminComponent_1.AdminComponent, children: [
+                            { path: '', redirectTo: 'games', pathMatch: 'full' },
+                            { path: 'games', component: AdminGamesComponent_1.AdminGamesComponent },
+                            { path: 'matches', component: AdminMatchesComponent_1.AdminMatchesComponent },
+                            { path: 'players', component: AdminPlayersComponent_1.AdminPlayersComponent },
+                            { path: 'teams', component: AdminTeamsComponent_1.AdminTeamsComponent },
+                        ]
+                    }
                 ])
             ],
             exports: [
