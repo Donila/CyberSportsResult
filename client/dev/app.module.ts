@@ -11,6 +11,8 @@ import { AppRoutingModule } from './app.routes';
 import { MainComponent } from './components/main/MainComponent';
 import { AdminComponent } from './components/admin/AdminComponent';
 import { AdminGamesComponent } from './components/admin/games/AdminGamesComponent';
+import { AdminGameEditComponent } from './components/admin/games/AdminGameEditComponent';
+import { GameEditComponent } from './components/admin/games/GameEditComponent';
 import { AdminTeamsComponent } from './components/admin/teams/AdminTeamsComponent';
 import { AdminPlayersComponent } from './components/admin/players/AdminPlayersComponent';
 import { AdminMatchesComponent } from './components/admin/matches/AdminMatchesComponent';
@@ -32,6 +34,8 @@ import { MatchService } from './services/MatchService';
         MainComponent,
         AdminComponent,
         AdminGamesComponent,
+        GameEditComponent,
+        AdminGameEditComponent,
         AdminTeamsComponent,
         AdminPlayersComponent,
         AdminMatchesComponent,

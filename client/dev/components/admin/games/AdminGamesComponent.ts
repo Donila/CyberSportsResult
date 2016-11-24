@@ -7,6 +7,8 @@ import {
 import { GameService } from '../../../services/GameService';
 import { Game } from '../../../models/Game';
 
+import { Router, ActivatedRoute, Params } from '@angular/router';
+
 @Component({
     selector: 'admin-games',
     templateUrl: 'components/admin/games/games.html',
@@ -14,18 +16,17 @@ import { Game } from '../../../models/Game';
 })
 export class AdminGamesComponent implements OnInit {
 
-    gameForm: Game;
+    gameForm: Game = {
+        _id: '123',
+        name: '321'
+    };
     games: Game[] = [];
 
     ngOnInit() {
         this._getAll();
-        this.gameForm = {
-            _id: '',
-            name: ''
-        };
     }
 
-    constructor(private _gameService: GameService) {}
+    constructor(private _gameService: GameService, private _router: Router) {}
 
     private _getAll(): void {
         this._gameService
@@ -53,5 +54,9 @@ export class AdminGamesComponent implements OnInit {
                         return this.games.splice(i, 1);
                 });
             })
+    }
+
+    onSelect(game: Game) {
+        this._router.navigate(['admin', 'games', game._id]);
     }
 }

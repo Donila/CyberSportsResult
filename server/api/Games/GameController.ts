@@ -9,6 +9,15 @@ export class GameController {
             .catch(error => res.status(400).json(error));
     }
 
+    static get(req: express.Request, res: express.Response): void {
+        let _id = req.params.id;
+
+        GameDao
+        ['get'](_id)
+            .then(game => res.status(200).json(game))
+            .catch(error => res.status(400).json(error));
+    }
+
     static createGame(req: express.Request, res: express.Response): void {
         let _game = req.body;
 

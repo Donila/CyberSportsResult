@@ -16,6 +16,19 @@ gameSchema.static('getAll', ():Promise<any> => {
     });
 });
 
+gameSchema.static('get', (id: string):Promise<any> => {
+    return new Promise((resolve:Function, reject:Function) => {
+        let _query = { _id: id };
+
+        Game
+          .findOne(_query)
+          .exec((err, game) => {
+              err ? reject(err)
+                  : resolve(game);
+          });
+    });
+});
+
 gameSchema.static('createGame', (game:Object):Promise<any> => {
     return new Promise((resolve:Function, reject:Function) => {
       if (!_.isObject(game)) {

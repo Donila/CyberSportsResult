@@ -29,6 +29,12 @@ export class GameService {
             .map((r) => r.json());
     }
 
+    get(id: string) {
+        return this._http
+            .get(GameService.ENDPOINT.replace(':id', id))
+            .map((r) => r.json());
+    }
+
     add(game: Game): Observable<any> {
         let _messageStringified = JSON.stringify(game);
 

@@ -1,0 +1,13 @@
+<form (submit)="submit(game)">
+    <div class="input-group">
+        <input type="text" name="name" class="form-control" [(ngModel)]="game.name" [class.todo-error]="!game.name && !game.name.length"
+            placeholder="Game name" autofocus />
+        <input type="text" name="id" class="form-control" [(ngModel)]="game._id" [class.todo-error]="!game.name && !game.name.length" placeholder="Url of game"
+            autofocus />
+        <input type="text" name="picture" class="form-control" [(ngModel)]="game.picture" placeholder="Game picture url" autofocus
+        />
+        <span class="input-group-btn">
+            <button class="btn btn-primary" type="submit" [disabled]="!game.name && !game.name.length">Add</button>
+        </span>
+    </div>
+</form>
