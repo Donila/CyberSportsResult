@@ -8,3 +8,5 @@ client/**/*.js.map
 client/**/*.js
 server/**/*.js.map
 server/**/*.js
+debug.log
+npm-debug.log

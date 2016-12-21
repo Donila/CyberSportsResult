@@ -28,6 +28,7 @@ export class GameEditComponent implements OnInit {
             this._gameService
             .add(game)
             .subscribe((m) => {
+                this.game = new Game();
                 this.gameAdded.emit(m);
             });
         } else {

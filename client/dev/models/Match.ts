@@ -1,11 +1,21 @@
 import { Team } from './Team';
 import { Player } from './Player';
 
+export interface PlayerScore {
+    player: string,
+    score: number
+}
+
+export interface TeamScore {
+    team: string,
+    score: number
+}
+
 export class Match {
     _id?: string;
-    name: string;
     picture?: string;
     createdAt?: Date;
-    opponents?: [Team | Player];
-    score?: [{ op: Team | Player, score: number }];
+    finished?: Date;
+    teams?: Array<TeamScore>;
+    players?: Array<PlayerScore>;
 }

@@ -17,8 +17,8 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 export class AdminGamesComponent implements OnInit {
 
     gameForm: Game = {
-        _id: '123',
-        name: '321'
+        _id: '',
+        name: ''
     };
     games: Game[] = [];
 
@@ -58,5 +58,9 @@ export class AdminGamesComponent implements OnInit {
 
     onSelect(game: Game) {
         this._router.navigate(['admin', 'games', game._id]);
+    }
+
+    gameAdded(game: Game) {
+        this.games.push(game);
     }
 }

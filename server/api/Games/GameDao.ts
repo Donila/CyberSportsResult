@@ -44,6 +44,21 @@ gameSchema.static('createGame', (game:Object):Promise<any> => {
     });
 });
 
+gameSchema.static('updateGame', (game:Object):Promise<any> => {
+    return new Promise((resolve:Function, reject:Function) => {
+      if (!_.isObject(game)) {
+        return reject(new TypeError('game is not a valid object.'));
+      }
+
+      var _game = new Game(game);
+
+      _game.update(_game, {}, (err, saved) => {
+        err ? reject(err)
+            : resolve(saved);
+      });
+    });
+});
+
 gameSchema.static('deleteGame', (id:string):Promise<any> => {
     return new Promise((resolve:Function, reject:Function) => {
         if (!_.isString(id)) {

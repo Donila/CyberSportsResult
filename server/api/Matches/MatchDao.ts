@@ -8,11 +8,19 @@ MatchSchema.static('getAll', ():Promise<any> => {
         let _query = {};
 
         Match
-          .find(_query)
-          .exec((err, Matches) => {
-              err ? reject(err)
-                  : resolve(Matches);
-          });
+            .find(_query)
+            .populate({
+                path: 'teams.team',
+                model: 'Team'
+            })
+            .populate({
+                path: 'players.player',
+                model: 'Player'
+            })
+            .exec((err, Matches) => {
+                err ? reject(err)
+                    : resolve(Matches);
+            });
     });
 });
 
