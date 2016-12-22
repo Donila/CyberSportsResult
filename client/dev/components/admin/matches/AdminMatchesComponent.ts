@@ -13,6 +13,8 @@ import { PlayerScore } from '../../../models/Match';
 import { Player } from '../../../models/Player';
 import { Team } from '../../../models/Team';
 
+import * as moment from 'moment';
+
 @Component({
     selector: 'admin-matches',
     templateUrl: 'components/admin/matches/matches.html',
@@ -123,5 +125,9 @@ export class AdminMatchesComponent implements OnInit {
             teams: [{ score: 0, team: ''}, { score: 0, team: ''}],
             players: [{ score: 0, player: ''}, { score: 0, player: ''}]
         };
+    }
+
+    finished(match: Match) {
+        return moment(match.finished).fromNow();
     }
 }
